@@ -3,6 +3,8 @@ let gunfire = new Audio('gunfire.mp3');
 let attacksound = new Audio('fireball2.mp3');
 let dinakill = new Audio('dinakill.wav');
 let music = new Audio('music4.mp3');
+  music.play();
+  music.loop = true;
 let updown = new Audio('updown.mp3');
 let gameover = new Audio('gameover.mp3');
 let finishgame = new Audio('finishgame.mp3');
@@ -61,8 +63,7 @@ function set() {
 }
 function go() {
   inpField.style.display = "inline"
-  music.play();
-  music.loop = true;
+
 }
 function randomParagraph() {
   let paragraphs=[pera1,pera2,pera3,pera4,pera5,pera6,pera7,pera8,pera9,pera10]
