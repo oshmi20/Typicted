@@ -84,8 +84,6 @@ function initTyping() {
     if (!isTyping) {
 
       let attack = setInterval(function name(params) {
-        console.log("cr is "+cr);
-        console.log("attackCount is "+attackCount);
         if (cr < 14) {
           if (attackCount < 15) {
             attackCount++;
