@@ -76,32 +76,15 @@ function initTyping() {
       timer = setInterval(initTimer, 1000);
       isTyping = true;
     }
-    document.addEventListener("keydown", KeyCheck);
-    function KeyCheck(event) {
-      KeyID = event.keyCode;
-      switch (KeyID) {
-        case 8:
-          inpField.disabled = false;
-          if (mistakes > 0) {
-            if (characters[charIndex].classList.contains("incorrect")) {
-              mistakes--;
-            }
-            characters[charIndex].classList.remove("correct", "incorrect");
-          }
-          characters[charIndex + 1].style.color = "black";
-          characters[charIndex + 1].style.fontSize = "2" + "rem";
-          characters[charIndex + 1].style.fontWeight = 500;
-          characters[charIndex + 1].style.borderBottom = "thick solid transparent";
-          characters[charIndex].style.color = "blue";
-          characters[charIndex].style.fontSize = "2" + "rem";
-          characters[charIndex].style.fontWeight = 900;
-          characters[charIndex].style.borderBottom = "thick solid blue"
-          break;
-        default:
-          break;
-      }
-    }
+  
     if (typedChar == null) {
+       if(charIndex > 0) {
+      charIndex--;
+      if(characters[charIndex].classList.contains("incorrect")) {
+          mistakes--;
+      }
+      characters[charIndex].classList.remove("correct", "incorrect");
+  }
     }
     else {
       if (characters[charIndex].innerText === typedChar) {
@@ -170,26 +153,16 @@ function initTyping() {
         alert_wrong.style.display = 'inline'
         wrongword.play();
         mistakes++;
-        characters[charIndex].classList.add("incorrect");
-        characters[charIndex].style.color = "red";
-        characters[charIndex].style.fontSize = "1.5" + "rem";
-        characters[charIndex].style.fontWeight = 0;
-        characters[charIndex].style.borderBottom = "thick solid transparent";
-        characters[charIndex + 1].style.color = "blue";
-        characters[charIndex + 1].style.fontSize = "2" + "rem";
-        characters[charIndex + 1].style.fontWeight = 900;
-        characters[charIndex + 1].style.borderBottom = "thick solid blue";
-
+  characters[charIndex].classList.add("incorrect");
+        inpField.value = inpField.value.slice(0, -1);
+        charIndex--;
+        mistakes--;
         wheel1.classList.remove("Running")
         wheel2.classList.remove("Running")
-        inpField.value = inpField.value.slice(0, -1);
-        inpField.disabled = true;
-
+        
 
       }
-      if (mistakes == 0) {
         charIndex++;
-      }
     }
 
     characters.forEach(span => span.classList.remove("active"));
