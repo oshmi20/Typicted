@@ -1,0 +1,491 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+.wrapper {
+    margin: 10px;
+    border: 5px solid black;
+    border-radius: 10px;
+    position: sticky;
+    bottom: 5px;
+}
+
+.input-field {
+    height: 40px;
+    opacity: 0;
+    z-index: 999;
+    position: absolute;
+}
+
+.content-box {
+    padding: 13px 20px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: rgb(121, 188, 236);
+}
+
+.content-box .typing-text {
+    overflow-y: hidden;
+    height: 40px;
+    width: 80vw;
+}
+
+.alert-wrong {
+    color: red;
+    display: none;
+}
+
+.typing-text::-webkit-scrollbar {
+    width: 0;
+}
+
+.typing-text {
+    font-size: 21px;
+    text-align: justify;
+    letter-spacing: 1px;
+    word-spacing: 10px;
+
+}
+
+.typing-text p span {
+    position: relative;
+}
+
+.typing-text p span.correct {
+    color: green;
+    display: none;
+
+}
+
+.typing-text p span.incorrect {
+    color: #cb3439;
+    outline: 1px solid #fff;
+    background: #ffc0cb;
+    border-radius: 4px;
+}
+
+.typing-text p span {
+    color: black;
+
+}
+
+.typing-text p span.active {
+    color: blue;
+    font-size: 2rem;
+    font-weight: 900;
+    border-bottom: 50px solid blue;
+}
+
+.hide {
+    display: none;
+}
+
+.lesstimeleft {
+    color: red;
+}
+
+.result-details {
+    display: flex;
+    width: fit-content;
+    height: 40px;
+    position: sticky;
+    left: 10px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.result-details li {
+    height: 22px;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.result-details li:not(:first-child) {
+    padding-left: 22px;
+    border-left: 1px solid #ccc;
+}
+
+.result-details li p {
+    font-size: 1.5rem;
+
+}
+
+.result-details li span {
+    display: block;
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+.time {
+    list-style: none;
+}
+
+.time span b {
+    font-size: 1.7rem;
+}
+
+.btn {
+    width: fit-content;
+    height: fit-content;
+    font-size: 1rem;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.coin_image {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    background-color: black;
+    border-radius: 100%;
+}
+
+/* Ground */
+.ground {
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid black;
+    overflow: hidden;
+    position: relative;
+}
+
+.play {
+    display: flex;
+    background-image: url('icebg.jpg');
+    background-repeat: repeat;
+    background-size: contain;
+    width: 3000px;
+    height: 300px;
+    /* height: 50vh; */
+    position: relative;
+    left: 0px;
+    background-color: white;
+}
+
+.start-bord {
+    background-image: url('start.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 120px;
+    height: 170px;
+    margin-top: 10px;
+}
+
+.stop-bord {
+    background-image: url('start.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 500px;
+    height: 170px;
+    margin-top: 10px;
+    position: absolute;
+    right: -400px;
+
+}
+
+.start-bord-text {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 100%;
+    background-color: red;
+}
+
+
+.car {
+    width: 200px;
+    height: 80px;
+    background-image: url('MainCar.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: -100px;
+    top: 30px;
+    border: 2px solid transparent;
+}
+
+.maincar {
+    height: 232px;
+    width: 240px;
+    background: url('santa1.png');
+    background-size: contain;
+    margin-left: 90px;
+    background-repeat: no-repeat;
+}
+
+.wheel1 img {
+    width: 43px;
+    position: relative;
+    top: 181px;
+    left: 30px;
+}
+
+.wheel2 img {
+    width: 44px;
+    position: relative;
+    top: 133px;
+    left: 145px;
+}
+
+.Running {
+    animation: wheelRotation .1s 4;
+}
+
+@keyframes wheelRotation {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes walk {
+    0% {
+        background-position: 0px;
+    }
+
+    100% {
+        background-position: -740px;
+    }
+}
+
+.players {
+    display: flex;
+    width: 3000px;
+    position: relative;
+}
+
+.coin1 {
+    width: 100px;
+    height: 100px;
+    margin-left: 140px;
+    animation: gift 2s ease-in-out alternate 0.2s infinite;
+    transform-origin: center -20px;
+}
+
+@keyframes gift {
+    0% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(5deg);
+    }
+}
+
+.arrow {
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.arrow:active {
+    color: red;
+}
+
+.otherCar1 {
+    height: 250px;
+    width: 300px;
+    top: -0px;
+    background-image: url('CristamasTree.png');
+    left: 1200px;
+
+}
+
+.otherCar2 {
+    background-image: url('snow.gif');
+    height: 250px;
+    width: 350px;
+    left: 400px;
+    top: 10px;
+}
+
+.otherCar3 {
+    background-image: url('icemelting.gif');
+    height: 60%;
+    width: 100%;
+    left: 2000px;
+    top: 90px;
+
+}
+
+
+@media only screen and (max-height: 400px) {
+    body {
+        .play {
+            height: 40vh;
+            background-size: contain;
+        }
+
+        .start-bord {
+            width: 120px;
+            height: 93%;
+            margin-top: 5px;
+        }
+
+        .car {
+            width: 250px;
+            height: 100px;
+            top: 30px;
+        }
+
+        .otherCar1 {
+            top: 20px;
+
+        }
+
+        .otherCar2 {
+            top: 20px;
+        }
+
+        .otherCar3 {
+            top: 20px;
+
+        }
+
+        .coin1 {
+            height: 50px;
+            width: 50px;
+        }
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .input-field {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 232px) {
+    .input-field {
+        width: 40%;
+    }
+}
+.instruction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instruction .rules {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    height: 80vh;
+    border: 2px solid black;
+    background-color: white;
+    position: absolute;
+    top: 10px;
+    overflow: scroll;
+    z-index: 9999;
+}
+
+.instruction .rules div {
+    border-bottom: 1px solid black;
+    padding: 20px;
+}
+
+.instructions {
+    font-size: 30px;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-bottom: 1px solid black;
+}
+
+.next-btn {
+    cursor: pointer;
+    font-size: 20px;
+}
+.result-box {
+    display: none;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100vw;
+    background-image: url('bg.jpg');
+    background-size: contain;
+    background-repeat: repeat;
+    overflow: scroll;
+
+}
+
+.result ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 20px solid black;
+    border-radius: 10%;
+    color: black;
+    height: fit-content;
+    width: 400px;
+    background-color: white;
+    box-shadow: 10px 14px 8px 2px gray;
+    position: relative;
+}
+
+.result ul li {
+    display: flex;
+    font-size: 20px;
+    margin: 5px;
+    border-bottom: 1px solid gray;
+}
+
+.result ul li span {
+    position: absolute;
+    right: 10px;
+}
+
+.Replay-btn {
+    background-color: rgb(3, 3, 110);
+    color: white;
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.Your-Result {
+    background-color: rgb(3, 3, 110);
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+
+.Replay-btn:active {
+    background-color: gray;
+}
+
+@media only screen and (max-height: 400px) {
+    .result {
+        margin-top: 30px;
+    }
+
+    .result ul li {
+        font-size: 15px;
+        margin: 0px;
+    }
+}
