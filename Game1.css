@@ -81,9 +81,8 @@ body {
  
 }
 .typing-text p span.incorrect{
-    color: #cb3439;
-    outline: 1px solid #fff;
-    background: #ffc0cb;
+     color: #cb3439;
+    border: 4px solid red;
     border-radius: 4px;
   }
 
