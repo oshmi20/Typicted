@@ -1,0 +1,549 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    /* overflow: hidden; */
+
+}
+
+body {
+    background-color: black;
+    overflow: hidden;
+ 
+}
+
+.wrapper {
+    margin: 10px;
+    border: 5px solid black;
+    border-radius: 10px;
+    position: sticky;
+    top: 5px;
+}
+
+/* .input-field {
+    outline: none;
+    display: none;
+    position: absolute;
+    margin-left: 5px;
+    font-size: 30px;
+    height: fit-content;
+    width: 70%;
+    word-spacing: 7px;
+    box-shadow: 10px 9px 10px -2px black;
+    z-index: 9999999999999;
+} */
+.input-field{
+    height: 40px;
+    /* width: 10%; */
+    opacity: 0;
+    z-index: 999999999;
+    position: absolute;
+}
+.content-box {
+    padding: 13px 20px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+.content-box .typing-text {
+    overflow-y: hidden;
+    height: 40px;
+    width: 80vw;
+}
+.typing-text::-webkit-scrollbar {
+    width: 0;
+}
+
+.typing-text {
+    font-size: 21px;
+    text-align: justify;
+    letter-spacing: 1px;
+    word-spacing: 10px;
+}
+.typing-text p span{
+    position: relative;
+  }
+
+.typing-text p span.correct {
+    color: green;
+    display: none;
+ 
+}
+.typing-text p span.incorrect{
+    color: #cb3439;
+    outline: 1px solid #fff;
+    background: #ffc0cb;
+    border-radius: 4px;
+  }
+
+
+
+.typing-text p span {
+    color: gray;
+}
+
+.typing-text p span.active {
+    color: #17a2b8;
+    font-size: 2rem;
+    font-weight: 900;
+    border-bottom: 50px solid #17a2b8;
+}
+
+.hide {
+    display: none;
+}
+
+.lesstimeleft {
+    color: red;
+}
+
+.result-details {
+    display: flex;
+    width: fit-content;
+    height: 40px;
+    position: sticky;
+    left: 10px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.result-details li {
+    height: 22px;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.result-details li:not(:first-child) {
+    padding-left: 22px;
+    border-left: 1px solid #ccc;
+}
+
+.result-details li p {
+    font-size: 1.5rem;
+}
+
+.result-details li span {
+    display: block;
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+.time {
+    list-style: none;
+}
+
+.time span b {
+    font-size: 1.7rem;
+}
+
+.btn {
+    width: fit-content;
+    height: fit-content;
+    font-size: 1rem;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.coin_image {
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    background-color: black;
+    border-radius: 100%;
+}
+
+/* Ground */
+.ground {
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid black;
+    overflow: hidden;
+    position: relative;
+}
+
+.tree {
+    background-image: url('building.avif');
+    background-repeat: repeat-x;
+    background-size: contain;
+    width: 3000px;
+    height: 20vh;
+    position: relative;
+    left: 0px;
+}
+
+.play {
+    display: flex;
+    background-image: url('road.jpg');
+    background-repeat: repeat-x;
+    width: 3000px;
+    height: 100vh;
+    position: relative;
+    left: 0px;
+}
+
+.start-bord {
+    background-image: url('start.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 120px;
+    height: 170px;
+    margin-top: 10px;
+}
+
+.stop-bord {
+    background-image: url('start.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 500px;
+    height: 170px;
+    margin-top: 10px;
+    position: absolute;
+    right: -400px;
+
+}
+
+.start-bord-text {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 100%;
+    background-color: red;
+}
+
+
+.car {
+    width: 200px;
+    height: 80px;
+    background-image: url('MainCar.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: -100px;
+    top: 30px;
+    border: 2px solid transparent;
+    animation: shake linear .8s infinite;
+}
+
+.wheel1 img {
+    width: 43px;
+    position: relative;
+    top: 39px;
+    left: 33px;
+}
+
+.wheel2 img {
+    width: 44px;
+    position: relative;
+    top: -8px;
+    left: 134px;
+}
+
+.Running {
+    animation: wheelRotation .1s 4;
+}
+
+@keyframes wheelRotation {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateY(-3px);
+    }
+
+    50% {
+        transform: translateY(3px);
+    }
+
+    100% {
+        transform: translateY(-3px);
+    }
+}
+
+.players {
+    display: flex;
+    width: 3000px;
+    position: relative;
+}
+
+.coin1 {
+    width: 50px;
+    height: 50px;
+    margin-left: 140px;
+    animation: coinani 1s infinite;
+}
+
+@keyframes coinani {
+    100% {
+        transform: rotate(360deg);
+        background-color: gold;
+        border-radius: 100%;
+    }
+
+}
+
+.arrow {
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.arrow:active {
+    color: red;
+}
+
+.otherCar1 {
+    height: 60px;
+    top: 10px;
+    background-image: url('car1.png');
+    left: 1400px;
+
+}
+
+.otherCar1 .otherCar_Wheel1 img {
+    animation: wheelRotation .1s infinite;
+    top: 23px;
+    left: 5px;
+}
+
+.otherCar1 .otherCar_Wheel2 img {
+    animation: wheelRotation .1s infinite;
+    top: -25px;
+    left: 94px;
+}
+
+.otherCar2 {
+    height: 70px;
+    background-image: url('car2.png');
+    left: 700px;
+    top: 30px;
+}
+
+.otherCar2 .otherCar_Wheel1 img {
+    animation: wheelRotation .1s infinite;
+    top: 30px;
+    left: 109px;
+    width: 40px;
+}
+
+.otherCar2 .otherCar_Wheel2 img {
+    animation: wheelRotation .1s infinite;
+    top: -20px;
+    left: 6px;
+}
+
+.otherCar3 {
+    height: 70px;
+    background-image: url('car3.png');
+    left: 2100px;
+    top: 10px;
+
+}
+
+.otherCar3 .otherCar_Wheel1 img {
+    animation: wheelRotation .1s infinite;
+    top: 30px;
+    left: 108px;
+    width: 35px;
+
+}
+
+.otherCar3 .otherCar_Wheel2 img {
+    animation: wheelRotation .1s infinite;
+    top: -11px;
+    left: 14px;
+    width: 41px;
+
+}
+
+@media only screen and (max-height: 400px) {
+    body {
+        .play {
+            height: 40vh;
+            background-size: contain;
+        }
+
+        .start-bord {
+            width: 120px;
+            height: 93%;
+            margin-top: 5px;
+        }
+
+        .car {
+            width: 150px;
+            height: 60px;
+        }
+
+        .wheel1 img {
+            width: 40px;
+            top: 28px;
+            left: 22px;
+        }
+
+        .wheel2 img {
+            width: 43px;
+            top: -19px;
+            left: 93px;
+        }
+
+        .otherCar2 .otherCar_Wheel1 img {
+            top: 22px;
+            left: 7px;
+        }
+
+        .otherCar2 .otherCar_Wheel2 img {
+            top: -22px;
+            left: 88px;
+        }
+
+        .otherCar3 .otherCar_Wheel1 img {
+            top: 22px;
+            left: 7px;
+        }
+
+        .otherCar3 .otherCar_Wheel2 img {
+            top: -16px;
+            left: 88px;
+        }
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .input-field {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 232px) {
+    .input-field {
+        width: 40%;
+    }
+}
+
+.instruction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instruction .rules {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: 80vh;
+    border: 2px solid black;
+    background-color: white;
+    position: absolute;
+    top: 10px;
+    overflow: scroll;
+    z-index: 9999;
+}
+
+.instruction .rules div {
+    border-bottom: 1px solid black;
+    padding: 20px;
+}
+
+.instructions {
+    font-size: 30px;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-bottom: 1px solid black;
+}
+
+.next-btn {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.result-box {
+    display: none;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100vw;
+    background-image: url('bg.jpg');
+    background-size: contain;
+    background-repeat: repeat;
+    overflow: scroll;
+
+}
+
+.result ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 20px solid black;
+    border-radius: 10%;
+    color: black;
+    height: fit-content;
+    width: 400px;
+    background-color: white;
+    box-shadow: 10px 14px 8px 2px gray;
+    position: relative;
+}
+
+.result ul li {
+    display: flex;
+    font-size: 20px;
+    margin: 5px;
+    border-bottom: 1px solid gray;
+}
+
+.result ul li span {
+    position: absolute;
+    right: 10px;
+}
+
+.Replay-btn {
+    background-color: rgb(3, 3, 110);
+    color: white;
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.Your-Result {
+    background-color: rgb(3, 3, 110);
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+
+.Replay-btn:active {
+    background-color: gray;
+}
+
+@media only screen and (max-height: 400px) {
+    .result {
+        margin-top: 30px;
+    }
+
+    .result ul li {
+        font-size: 15px;
+        margin: 0px;
+    }
+}

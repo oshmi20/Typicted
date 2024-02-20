@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url('bg.jpg');
+    background-size: contain;
+    background-repeat:repeat;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex; 
+   justify-content: center;
+}
+.homeLogo{
+    height: 40px;
+    width: 100vw;
+    background-color: white; 
+     position: fixed;
+    top: 1px;
+  border: 2px solid black;
+
+    /* color: white; */
+}
+
+.games{
+    width: 70vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 70px;
+}
+.game{
+    flex-wrap:wrap;
+    width:350px;
+    height: 300px;
+    animation: hangingGame 2s ease-in-out alternate 0.2s infinite ;
+    transform-origin: center -20px; 
+    box-shadow: 10px 20px 15px 5px black;
+}
+
+.play_btn{
+    position: relative;
+    top: -200px;
+  left: 177px;
+  color: white;
+  font-size: 50px;
+}
+
+
+@keyframes hangingGame {
+   0%{
+    transform: rotate(-5deg);
+   }
+   100%{
+    transform: rotate(5deg);
+   }
+}
+.logoName{
+    font-size: 20px;
+    margin-left: 10px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+    text-shadow: 1px 1px #ff0000;
+}
+@media only screen and (max-width: 350px){
+     .game{
+        width:150px;
+        height: 100px;
+    }
+    .play_btn{
+        position: relative;
+        top: -60px;
+        left: 75px;
+        color: white;
+        font-size: 35px;
+    }
+ }

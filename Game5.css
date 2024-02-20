@@ -1,0 +1,448 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+.wrapper {
+    margin: 10px;
+    border: 5px solid black;
+    border-radius: 10px;
+    position: sticky;
+    top: 5px;
+}
+
+.input-field {
+    height: 40px;
+    opacity: 0;
+    z-index: 999999999;
+    position: absolute;
+}
+
+.content-box {
+    padding: 13px 20px 0;
+    color: white;
+    border: 1px solid #ccc;
+}
+
+.content-box .typing-text {
+    overflow-y: hidden;
+    height: 40px;
+    width: 80vw;
+}
+
+.typing-text::-webkit-scrollbar {
+    width: 0;
+}
+
+.typing-text {
+    font-size: 21px;
+    text-align: justify;
+    letter-spacing: 1px;
+    word-spacing: 10px;
+}
+
+.typing-text p span {
+    position: relative;
+}
+
+.typing-text p span.correct {
+    color: green;
+    display: none;
+
+}
+
+.typing-text p span.incorrect {
+    color: #cb3439;
+    outline: 1px solid #fff;
+    background: #ffc0cb;
+    border-radius: 4px;
+}
+
+.typing-text p span {
+    color: gray;
+}
+
+.typing-text p span.active {
+    color: #17a2b8;
+    font-size: 2rem;
+    font-weight: 900;
+    border-bottom: 50px solid #17a2b8;
+}
+
+.hide {
+    display: none;
+}
+
+.lesstimeleft {
+    color: red;
+}
+
+.result-details li {
+    height: 22px;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin-top: 5px;
+    padding: 10px;
+    color: white;
+}
+
+.result-details li:not(:first-child) {
+    padding-left: 22px;
+    border-left: 1px solid #ccc;
+}
+
+.result-details li p {
+    font-size: 1.5rem;
+}
+
+.result-details li span {
+    display: block;
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+.time {
+    list-style: none;
+}
+
+.time span b {
+    font-size: 1.7rem;
+}
+
+.btn {
+    width: fit-content;
+    height: fit-content;
+    font-size: 1rem;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.ground {
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid black;
+    overflow: hidden;
+    position: relative;
+}
+
+.play {
+    display: flex;
+    background-image: url('Game5bg.jpg');
+    background-repeat: repeat-x;
+    width: 100vw;
+    height: 70vh;
+    position: relative;
+    left: 0px;
+    overflow: hidden;
+}
+
+.stop-bord {
+    background-image: url('dinasaur.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 250px;
+    height: 150px;
+    margin-top: 10px;
+    position: absolute;
+    right: -20px;
+    top: 30px;
+}
+
+.progress-Container {
+    height: 15px;
+    width: 100px;
+    background-color: gray;
+    position: relative;
+    right: -30px;
+    top: -70px;
+    border-radius: 20%;
+}
+
+.progress-bar {
+    position: absolute;
+    height: 100%;
+    background-color: red;
+    width: 0px;
+    border-radius: 20%;
+}
+
+.player-progress-Container {
+    height: 15px;
+    width: 100px;
+    background-color: gray;
+    position: relative;
+    right: -5px;
+    border-radius: 10%;
+}
+
+.player-progress-bar {
+    position: absolute;
+    height: 100%;
+    background-color: red;
+    width: 0px;
+    border-radius: 10%;
+}
+
+.car {
+    width: 200px;
+    height: 180px;
+    background-image: url('GunPlayer2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: -10px;
+    top: 30px;
+}
+
+.bullet img {
+    width: 50px;
+    position: relative;
+    top: 70px;
+    left: 169px;
+    display: none;
+}
+
+.fireball img {
+    width: 100px;
+    position: relative;
+    top: 30px;
+    left: -50px;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateY(-3px);
+    }
+
+    50% {
+        transform: translateY(3px);
+    }
+
+    100% {
+        transform: translateY(-3px);
+    }
+}
+
+.arrow {
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.arrow:active {
+    color: red;
+}
+
+.result-box {
+    display: none;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100vw;
+    background-image: url('bg.jpg');
+    background-size: contain;
+    background-repeat: repeat;
+    overflow: scroll;
+
+}
+
+.result ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 20px solid black;
+    border-radius: 10%;
+    color: black;
+    height: fit-content;
+    width: 400px;
+    background-color: white;
+    box-shadow: 10px 14px 8px 2px gray;
+    position: relative;
+}
+
+.result ul li {
+    display: flex;
+    font-size: 20px;
+    margin: 5px;
+    border-bottom: 1px solid gray;
+}
+
+.result ul li span {
+    position: absolute;
+    right: 10px;
+}
+
+.Replay-btn {
+    background-color: rgb(3, 3, 110);
+    color: white;
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.Your-Result {
+    background-color: rgb(3, 3, 110);
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+
+.Replay-btn:active {
+    background-color: gray;
+}
+
+@media only screen and (max-height: 400px) {
+    .result {
+        margin-top: 30px;
+    }
+
+    .result ul li {
+        font-size: 15px;
+        margin: 0px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .car {
+        width: 170px;
+        height: 120px;
+    }
+
+    .stop-bord {
+        width: 150px;
+        height: 100px;
+        right: 10px;
+    }
+
+    .bullet img {
+        width: 50px;
+        position: relative;
+        top: 50px;
+        left: 169px;
+        display: none;
+    }
+
+    .fireball img {
+        width: 70px;
+        position: relative;
+        top: 10px;
+        left: -50px;
+    }
+}
+
+@media only screen and (max-width: 408px) {
+    .car {
+        width: 130px;
+        height: 100px;
+    }
+
+    .stop-bord {
+        width: 130px;
+        height: 80px;
+        right: -10px;
+    }
+
+    .bullet img {
+        width: 50px;
+        position: relative;
+        top: 40px;
+        left: 169px;
+        display: none;
+    }
+
+    .progress-Container {
+        width: 60px;
+    }
+
+    .player-progress-Container {
+        width: 60px;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .car {
+        width: 70px;
+        height: 70px;
+    }
+
+    .stop-bord {
+        width: 90px;
+        height: 50px;
+        right: -10px;
+    }
+
+    .bullet img {
+        width: 30px;
+        position: relative;
+        top: 20px;
+        left: 169px;
+        display: none;
+    }
+
+    .fireball img {
+        width: 50px;
+    }
+
+    .progress-Container {
+        width: 40px;
+    }
+
+    .player-progress-Container {
+        width: 40px;
+    }
+}
+@media only screen and (max-height: 307px) {
+    .car {
+        width: 70px;
+        height: 70px;
+    }
+
+    .stop-bord {
+        width: 90px;
+        height: 50px;
+        right: -10px;
+    }
+
+    .bullet img {
+        width: 30px;
+        position: relative;
+        top: 20px;
+        left: 169px;
+        display: none;
+    }
+
+    .fireball img {
+        width: 50px;
+    }
+
+    .progress-Container {
+        width: 40px;
+    }
+
+    .player-progress-Container {
+        width: 40px;
+    }
+}

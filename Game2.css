@@ -1,0 +1,407 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+.wrapper {
+    margin: 10px;
+    border: 5px solid black;
+    border-radius: 10px;
+    position: sticky;
+    top: 5px;
+}
+
+.input-field {
+    height: 40px;
+    opacity: 0;
+    z-index: 999999999;
+    position: absolute;
+}
+
+.content-box {
+    padding: 13px 20px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: black;
+}
+
+.content-box .typing-text {
+    overflow-y: hidden;
+    height: 40px;
+    width: 80vw;
+}
+
+.typing-text::-webkit-scrollbar {
+    width: 0;
+}
+
+.typing-text {
+    font-size: 21px;
+    text-align: justify;
+    letter-spacing: 1px;
+    color: white;
+    word-spacing: 10px;
+
+}
+
+.typing-text p span.correct {
+    color: green;
+    display: none;
+}
+
+.typing-text p span {
+    color: gray;
+}
+
+.typing-text p span.active {
+    color: #17a2b8;
+    font-size: 2rem;
+    font-weight: 900;
+    border-bottom: 50px solid #17a2b8;
+}
+
+.typing-text p span.incorrect {
+    color: #cb3439;
+    outline: 1px solid #fff;
+    background: #ffc0cb;
+    border-radius: 4px;
+}
+
+.wrong {
+    color: red;
+}
+
+.hide {
+    display: none;
+}
+
+.result-details {
+    display: flex;
+    width: fit-content;
+    height: 40px;
+    position: sticky;
+    left: 10px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.result-details li {
+    height: 22px;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.result-details li:not(:first-child) {
+    padding-left: 22px;
+    border-left: 1px solid #ccc;
+}
+
+.result-details li p {
+    font-size: 1.5rem;
+}
+
+.result-details li span {
+    display: block;
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+.time {
+    list-style: none;
+}
+
+.time span b {
+    font-size: 1.7rem;
+    color: white;
+}
+
+.btn {
+    width: fit-content;
+    height: fit-content;
+    font-size: 1rem;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.coin_image {
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+    border-radius: 100%;
+}
+
+/* Ground */
+.ground {
+    width: 100vw;
+    height: 100vh;
+    border: 2px solid black;
+    overflow: hidden;
+    position: relative;
+
+}
+
+.tree {
+    background-image: url('horrorbg2.png');
+    background-repeat: repeat-x;
+    background-size: contain;
+    width: 3000px;
+    height: 20vh;
+    position: relative;
+    left: 0px;
+}
+
+.play {
+    display: flex;
+    background-image: url('Game2Ground.png');
+    background-repeat: repeat-x;
+    width: 3000px;
+    height: 100vh;
+    position: relative;
+    left: 0px;
+}
+
+.stop-bord {
+    background-image: url('horroBuilding.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 350px;
+    height: 240px;
+    position: absolute;
+    top: -50px;
+    right: -400px;
+}
+
+.start-bord-text {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 100%;
+    background-color: red;
+}
+
+.car {
+    width: 230px;
+    height: 150px;
+    background-image: url('flying\ bird.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: -30px;
+    border: 2px solid transparent;
+
+}
+
+.players {
+    display: flex;
+    width: 3000px;
+    position: relative;
+}
+
+.coin1 {
+    width: 80px;
+    height: 80px;
+    margin-left: 100px;
+    animation: coinani 4s infinite;
+}
+
+@keyframes coinani {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.arrow {
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.arrow:active {
+    color: red;
+}
+
+.MainCar {
+    z-index: 9999;
+}
+
+.otherCar1 {
+    height: 150px;
+    top: 10px;
+    background-image: url('h2.png');
+    left: 1400px;
+
+}
+
+.otherCar2 {
+    height: 120px;
+    background-image: url('h1.png');
+    left: 700px;
+    top: 30px;
+}
+
+.otherCar3 {
+    width: 100px;
+    height: 120px;
+    background-image: url('https://media.tenor.com/C_MPAuE1Bq0AAAAj/truth-and-tales-monster.gif');
+    left: 2100px;
+    top: 10px;
+}
+
+
+.Your-Result {
+    background-color: black;
+    text-align: center;
+    font-size: 40px;
+    color: white;
+}
+
+.result-box {
+    display: none;
+
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100vw;
+    background-image: url('bg.jpg');
+    background-size: contain;
+    background-repeat: repeat;
+    overflow: scroll;
+}
+
+.result ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 20px solid black;
+    border-radius: 10%;
+    color: black;
+    height: fit-content;
+    width: 400px;
+    background-color: white;
+    box-shadow: 10px 14px 8px 2px gray;
+    position: relative;
+
+}
+
+.result ul li {
+    display: flex;
+    font-size: 20px;
+    margin: 5px;
+    border-bottom: 1px solid gray;
+}
+
+.result ul li span {
+    position: absolute;
+    right: 10px;
+}
+
+.Replay-btn {
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.Replay-btn:active {
+    background-color: gray;
+}
+
+@media only screen and (max-height: 400px) {
+    .play {
+        height: 40vh;
+        background-size: contain;
+    }
+
+    .start-bord {
+        width: 120px;
+        height: 93%;
+        margin-top: 5px;
+    }
+
+}
+
+@media only screen and (max-width: 360px) {
+    .input-field {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 232px) {
+    .input-field {
+        width: 40%;
+    }
+}
+
+.instruction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instruction .rules {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: 80vh;
+    border: 2px solid black;
+    background-color: white;
+    position: absolute;
+    top: 10px;
+    overflow: scroll;
+    z-index: 9999;
+}
+
+.instruction .rules div {
+    border-bottom: 1px solid black;
+    padding: 20px;
+}
+
+.instructions {
+    font-size: 30px;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-bottom: 1px solid black;
+}
+
+.next-btn {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+@media only screen and (max-height: 400px) {
+    .result {
+        margin-top: 30px;
+    }
+
+    .result ul li {
+        font-size: 15px;
+        margin: 0px;
+    }
+}
